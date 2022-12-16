@@ -1,15 +1,15 @@
-django.nV 3.0
+django.nV-3.0
 =========
 
-django.nV is a purposefully vulnerable Django application provided by [nVisium](https://www.nvisium.com/). django.nV 3.0 supports django version 3, and some features have been patched to support Python 3.10+.
+django.nV is a purposefully vulnerable Django application provided by [nVisium](https://www.nvisium.com/). django.nV-3.0 is based on the django.nV. django.nV-3.0 supports django version 3, and some features have been patched to support Python 3.5+.
 
 ### System Requirements & Setup 
 
-TODO
+- python3.5+
 
 ### Installation of Dependencies
 
-To install the dependencies, simply run `pip install -r requirements.txt`.
+To install the dependencies, simply run `pip3 install -r requirements.txt`.
 
 ### Database Setup
 
@@ -25,3 +25,10 @@ To run the app in its application folder type:
     ./runapp.sh
 
 You should then be able to access the web interface at `http://localhost:8000/`.
+
+## Test account(the passwords are the same)
+- admin
+- one
+- two
+- three
+- four
