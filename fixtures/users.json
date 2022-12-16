@@ -1,0 +1,73 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "first_name" : "",
+      "last_name" : "",
+      "username" : "admin",
+      "password": "md5$HI6kAAg9zExbMZptecVgME$c75cb59d90a5dd4963d6d0f212f1a547",
+      "is_superuser" : true,
+      "email" : "admin@sb.com",
+      "is_staff" : true,
+      "is_active" : true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "first_name" : "One",
+      "last_name" : "Hong",
+      "username" : "one",
+      "password": "md5$GRLO9EEjAk8GyIsYkM1OPg$cb760b052c7b7e8356938e59c87c5fc7",
+      "is_superuser" : false,
+      "email" : "one@sb.com",
+      "is_staff" : true,
+      "is_active" : true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "first_name" : "Two",
+      "last_name" : "Kim",
+      "username" : "two",
+      "password": "md5$UIVY0l5eBmGJwxAsMCRwFe$659140bd05a599ea9e230293285b1dff",
+      "is_superuser" : false,
+      "email" : "two@sb.com",
+      "is_staff" : true,
+      "is_active" : true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "first_name" : "Three",
+      "last_name" : "Park",
+      "username" : "three",
+      "password": "md5$mMCbIql2MSEvw06S7ioKxT$878acab2c972acc14102fe0170ba809b",
+      "is_superuser" : false,
+      "email" : "three@sb.com",
+      "is_staff" : true,
+      "is_active" : true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "first_name" : "Four",
+      "last_name" : "Choi",
+      "username" : "four",
+      "password": "md5$Y8bp25RfmUDQqZuYWxrLQa$d3e6559ec23a1571ed8e824fb671217a",
+      "is_superuser" : false,
+      "email" : "four@sb.com",
+      "is_staff" : false,
+      "is_active" : true
+    }
+  }
+  
+]

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task Manager</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% load static %}
+        <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/backend/bootstrap-reset.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/font-awesome.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/jquery.datetimepicker.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/backend/style.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/backend/style-responsive.css" %}"/>
+    </head>
+    <body>
+        <section id="container">
+
+            <header class="header white-bg">
+                <a href="/" class="logo">Task<span>Manager</span></a>
+                <div class="top-nav">
+                    <ul class="nav pull-right top-menu">
+
+                        <li>
+                            <form class="navbar-search" action="{% url 'search' %}">
+                                <div class="form-group">
+                                    <input type="text" name="q" class="form-control search" placeholder="Search">
+                                </div>
+                            </form>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <!-- XSS -->
+                                <span class="username"><i class="fa fa-user fa-fw"></i> {{ user.username|safe }}</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu extended logout">
+                                <li><a href="/profile"><i class="fa fa-cog"></i>Profile</a></li>
+                                <li><a href="/change_password"><i class="fa fa-lock"></i>Change PW</a></li>
+                                <li><a href="/logout?redirect=/"><i class="fa fa-sign-out"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <aside>
+                <div id="sidebar"  class="nav-collapse ">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li>
+                            <a href="{% url 'dashboard' %}">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span>
+                            </a>
+                            <a href="{% url 'project_list' %}">
+                                <i class="fa fa-list"></i>
+                                <span>My Projects</span>
+                            </a>
+                            <a href="{% url 'task_list' %}">
+                                <i class="fa fa-check-square"></i>
+                                <span>My Tasks</span>
+                            </a>
+                            <a href="{% url 'search' %}">
+                                <i class="fa fa-search"></i>
+                                <span>Search</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <section id="main-content">
+                {% block content %}
+                {% endblock %}
+            </section>
+
+            <script src="{% static "js/jquery-1.8.3.min.js" %}"></script>
+            <script src="{% static "js/bootstrap.js" %}"></script>
+            <script src="{% static "js/backend/jquery.dcjqaccordion.2.7.js" %}"></script>
+            <script src="{% static "js/backend/jquery.scrollTo.min.js" %}"></script>
+            <script src="{% static "js/backend/jquery.nicescroll.js" %}"></script>
+            <script src="{% static "js/backend/jquery.sparkline.js" %}"></script>
+            <script src="{% static "js/backend/jquery.customSelect.min.js" %}"></script>
+            <script src="{% static "js/backend/jquery.datetimepicker.js" %}"></script>
+            <script src="{% static "js/backend/respond.min.js" %}"></script>
+            <script src="{% static "js/backend/slidebars.min.js" %}"></script>
+            <script src="{% static "js/backend/common-scripts.js" %}"></script>
+
+            <script>
+                $(function(){
+                    $('select.styled').customSelect();
+                    $('#datetimepicker').datetimepicker({format:"unixtime", inline:true});
+                });
+
+            </script>
+        </section>
+    </body>
+</html>

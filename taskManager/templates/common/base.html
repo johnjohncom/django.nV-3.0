@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task Manager</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% load static %}
+        <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/font-awesome.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,400italic,700" >
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,400italic,700" >
+
+    </head>
+    <body>
+        <header class="header-frontend">
+            <div class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Task<span>Manager</span></a>
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav">
+                            {% if user.is_authenticated %}
+                                <li><a href="/logout">Logout</a></li>
+                            {% else %}
+                                <li class="active" ><a href="/register">Sign Up</a></li>
+                                <li><a href="/login">Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-2">
+                        <h1>contact info</h1>
+                        <address>
+                            <p>514 Seolleung-ro, Gangnam-gu, Seoul</p>
+
+                            <p>p: (02)555-4654</p>
+                            <p>e: <a href="#">info@sb.com</a></p>
+                        </address>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-2 col-lg-offset-1">
+                        <h1>Our Mission</h1>
+                        <p>Making life easier, one task at a time.</p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
