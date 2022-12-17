@@ -20,7 +20,7 @@ def note_create(request, project_id, task_id):
             task=parent_task)
 
         note.save()
-        return redirect('/projects/' + project_id + '/tasks' +
+        return redirect('/projects/' + project_id + '/tasks/' +
                         task_id, {'new_note_added': True})
     else:
         template = loader.get_template('notes/note_create.html')
