@@ -7,7 +7,7 @@ from django.template import loader
 
 from django.contrib import messages
 
-from taskManager.models import Project
+from taskManager.models import Project, Task, Notes, File
 
 
 def project_create(request):
@@ -75,6 +75,19 @@ def project_edit(request, project_id):
 def project_delete(request, project_id):
     # IDOR
     project = Project.objects.get(pk=project_id)
+    tasks = Task.objects.filter(project_id=project_id)
+    
+    # Delete all resources in projects
+    for task in tasks:
+        notes = Notes.objects.filter(task_id=task.id).all()
+        for note in notes:
+            note.delete()
+        task.delete()    
+
+    files = File.objects.filter(project_id=project_id)
+    for file in files:
+        file.delete()
+
     project.delete()
     return redirect('/dashboard')
 

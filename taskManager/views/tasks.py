@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.models import User
 
-from taskManager.models import Task, Project
+from taskManager.models import Task, Project, Notes
 
 
 def task_create(request, project_id):
@@ -74,7 +74,10 @@ def task_delete(request, project_id, task_id):
     task = Task.objects.get(pk=task_id)
     if proj is not None:
         if task is not None and task.project == proj:
-            # TODO: 하위에 note 있으면 삭제 못하도록
+            # detele all notes in the task
+            notes = Notes.objects.filter(task_id=task.id).all()
+            for note in notes:
+                note.delete()
             task.delete()
 
     return redirect('/projects/' + project_id + '/')
