@@ -19,6 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 
+#! Secret Management Failure
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0yxzudryd8)-%)(fz&7q-!v&cq1u6vbfoc4u7@u_&i)b@4eh^q'
 
@@ -106,8 +107,7 @@ TEMPLATES = [
 LOGIN_URL = '/login/'
 
 #! Cryptographic Failures
+# https://docs.djangoproject.com/en/3.2/topics/auth/passwords/
 PASSWORD_HASHERS = ['django.contrib.auth.hashers.MD5PasswordHasher']
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
-
-EMAIL_PORT = 1025
