@@ -27,7 +27,7 @@ def note_create(request, project_id, task_id):
         context = {'task_id': task_id}
         return HttpResponse(template.render(context, request))
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def note_edit(request, project_id, task_id, note_id):
 
     proj = Project.objects.get(pk=project_id)
@@ -53,7 +53,7 @@ def note_edit(request, project_id, task_id, note_id):
         context = {'note': note}
         return HttpResponse(template.render(context, request))
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def note_delete(request, project_id, task_id, note_id):
     proj = Project.objects.get(pk=project_id)
     task = Task.objects.get(pk=task_id)

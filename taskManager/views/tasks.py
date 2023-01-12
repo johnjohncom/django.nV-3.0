@@ -43,7 +43,7 @@ def task_create(request, project_id):
         context = {'proj_id': project_id}
         return HttpResponse(template.render(context, request))
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def task_edit(request, project_id, task_id):
 
     proj = Project.objects.get(pk=project_id)
@@ -68,17 +68,18 @@ def task_edit(request, project_id, task_id):
         context = {'task': task}
         return HttpResponse(template.render(context, request))
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def task_delete(request, project_id, task_id):
     proj = Project.objects.get(pk=project_id)
     task = Task.objects.get(pk=task_id)
     if proj is not None:
         if task is not None and task.project == proj:
+            # TODO: 하위에 note 있으면 삭제 못하도록
             task.delete()
 
     return redirect('/projects/' + project_id + '/')
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def task_complete(request, project_id, task_id):
     proj = Project.objects.get(pk=project_id)
     task = Task.objects.get(pk=task_id)

@@ -41,7 +41,7 @@ def project_create(request):
         return HttpResponse(template.render(context, request))
 
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def project_edit(request, project_id):
 
     proj = Project.objects.get(pk=project_id)
@@ -71,7 +71,7 @@ def project_edit(request, project_id):
         return HttpResponse(template.render(context, request))
 
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def project_delete(request, project_id):
     # IDOR
     project = Project.objects.get(pk=project_id)
@@ -95,7 +95,7 @@ def project_details(request, project_id):
         context = {'proj': proj}
         return HttpResponse(template.render(context, request))
 
-#! Insecure Direct Object Reference (IDOR)
+#! Broken Acess Control - Insecure Direct Object Reference (IDOR)
 def project_list(request):
     sorted_projects = Project.objects.filter(
         users_assigned=request.user.id).order_by('title')
