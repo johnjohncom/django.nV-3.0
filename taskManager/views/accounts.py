@@ -92,9 +92,8 @@ def register(request):
 
 
 def profile(request):
-    return render(request, 'profile.html', {'user': request.user})
+    return render(request, 'accounts/profile.html', {'user': request.user})
 
-#! Insecure Direct Object Reference (IDOR)
 def profile_view(request, user_id):
     try:
         user = User.objects.get(pk=user_id)
@@ -141,7 +140,7 @@ def profile_by_id(request, user_id):
             user.save()
             messages.info(request, "User Updated")
 
-    return render(request, 'profile.html', {'user': user})
+    return render(request, 'accounts/profile.html', {'user': user})
 
 
 def reset_password(request):
