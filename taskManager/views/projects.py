@@ -75,7 +75,7 @@ def project_edit(request, project_id):
 def project_delete(request, project_id):
     # IDOR
     project = Project.objects.get(pk=project_id)
-    tasks = Task.objects.filter(project_id=project_id)
+    tasks = Task.objects.filter(project_id=project.id)
     
     # Delete all resources in projects
     for task in tasks:
@@ -84,7 +84,7 @@ def project_delete(request, project_id):
             note.delete()
         task.delete()    
 
-    files = File.objects.filter(project_id=project_id)
+    files = File.objects.filter(project_id=project.id)
     for file in files:
         file.delete()
 
