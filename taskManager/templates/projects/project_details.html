@@ -79,9 +79,9 @@
                                         </td>
                                         <td>
                                             {% if task.completed == True %}
-                                                <a href="{% url 'task_complete' project_id=proj.id task_id=task.id %}"><span class="label label-info"><i class="fa fa-check"></i> Completed</span></a>
+                                                <span class="label label-info"><i class="fa fa-check"></i> Completed</span>
                                             {% else %}
-                                                <a href="{% url 'task_complete' project_id=proj.id task_id=task.id %}"><span class="label label-warning"><i class="fa fa-tasks"></i> In Progress</span></a>
+                                                <span class="label label-warning"><i class="fa fa-tasks"></i> In Progress</span>
                                             {% endif %}
 
                                         </td>
