@@ -129,9 +129,10 @@ var Script = function () {
         })
     }
 
-
-
-
-
-
 }();
+
+
+$(function(){
+    $('select.styled').customSelect();
+    $('#datetimepicker').datetimepicker({format:"unixtime", inline:true});
+});
