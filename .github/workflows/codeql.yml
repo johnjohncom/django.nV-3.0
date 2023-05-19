@@ -9,7 +9,7 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: "Bandit"
+name: "Codacy"
 
 on:
  workflow_dispatch:
@@ -44,11 +44,19 @@ jobs:
     - name: Install dependencies
       run: pip3 install -r requirements.txt
 
-    - name: Bandit
-      uses: shundor/bandit-action@main
-      with: 
-        path: "."
-        level: low
-        confidence: low
-        exit_zero: true           
-
+    - name: Codacy
+      uses: codacy/codacy-analysis-cli-action@master
+      with:
+          output: results.sarif
+          format: sarif
+          # Adjust severity of non-security issues
+          gh-code-scanning-compat: true
+          # Force 0 exit code to allow SARIF file generation
+          # This will hand over control about PR rejection to the GitHub side
+          max-allowed-issues: 2147483647
+   
+    # Upload the SARIF file generated in the previous step
+    - name: Upload SARIF results file
+      uses: github/codeql-action/upload-sarif@main
+      with:
+          sarif_file: results.sarif
