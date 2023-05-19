@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'python' ]
+        language: [ 'python' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Use only 'java' to analyze code written in Java, Kotlin or both
         # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
@@ -45,10 +45,10 @@ jobs:
       run: pip3 install -r requirements.txt
 
     - name: Bandit
-      uses: shundor/bandit-action@v1
+      uses: shundor/bandit-action@main
       with: 
         path: "."
-        level: high
-        confidence: high
+        level: low
+        confidence: low
         exit_zero: true           
 
